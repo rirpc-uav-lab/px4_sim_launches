@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 from glob import glob
 import os
 
-package_name = 'launches'
+package_name = 'px4_sim_launches'
 
 setup(
     name=package_name,
