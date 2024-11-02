@@ -22,7 +22,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
         launch_arguments={
-            'gz_args': '-r drone_agro.sdf'
+            'gz_args': '-r agro_drones.sdf'
         }.items(),
     )
 
@@ -36,6 +36,25 @@ def generate_launch_description():
     )
 
     ld.add_action(spawn_agressivniy_drone1)
+
+
+    spawn_agressivniy_drone2 = ExecuteProcess(
+        cmd=[[
+            'PX4_SYS_AUTOSTART=4999 PX4_GZ_MODEL_NAME=uav2 ~/PX4-Autopilot/build/px4_sitl_default/bin/px4 -i 1',
+        ]],
+        shell=True
+    )
+
+    ld.add_action(spawn_agressivniy_drone2)
+
+    spawn_agressivniy_drone3 = ExecuteProcess(
+        cmd=[[
+            'PX4_SYS_AUTOSTART=4999 PX4_GZ_MODEL_NAME=uav3 ~/PX4-Autopilot/build/px4_sitl_default/bin/px4 -i 2',
+        ]],
+        shell=True
+    )
+
+    ld.add_action(spawn_agressivniy_drone3)
 
     bridge = Node(
         package='ros_gz_bridge',
