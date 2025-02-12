@@ -44,12 +44,16 @@ def generate_launch_description():
                     '/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/image@sensor_msgs/msg/Image@gz.msgs.Image',
                     '/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/image@sensor_msgs/msg/Image@gz.msgs.Image',
                     '/world/default/model/uav1/link/laser_rangefinder/base_link/sensor/laser/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+                    '/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+                    '/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
                     ],
          parameters=[{'qos_overrides./uav1.subscriber.reliability': 'reliable'}],
                          
         remappings=[
                     ('/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/image', '/uav1/camera'),
                     ('/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/image', '/uav1/camera_down'),
+                    ('/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan', '/uav1/lidar'),
+                    ('/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan/points', '/uav1/lidar_points'),
                     ('/world/default/model/uav1/link/laser_rangefinder/base_link/sensor/laser/scan', '/uav1/rangefinder')],
         output='screen'
         )
