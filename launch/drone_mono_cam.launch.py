@@ -30,7 +30,7 @@ def generate_launch_description():
 
     spawn_agressivniy_drone1 = ExecuteProcess(
         cmd=[[
-            'PX4_SYS_AUTOSTART=4999 PX4_GZ_MODEL_NAME=uav1 ~/PX4-Autopilot/build/px4_sitl_default/bin/px4 -i 0',
+            'PX4_SYS_AUTOSTART=4013 PX4_GZ_MODEL_NAME=uav1 ~/PX4-Autopilot/build/px4_sitl_default/bin/px4 -i 0',
         ]],
         shell=True
     )
@@ -42,6 +42,8 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[ 
                     '/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/image@sensor_msgs/msg/Image@gz.msgs.Image',
+                    '/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
+                    '/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
                     '/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/image@sensor_msgs/msg/Image@gz.msgs.Image',
                     '/world/default/model/uav1/link/laser_rangefinder/base_link/sensor/laser/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
                     '/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
@@ -51,6 +53,8 @@ def generate_launch_description():
                          
         remappings=[
                     ('/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/image', '/uav1/camera'),
+                    ('/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/camera_info', '/uav1/camera_down/camera_info'),
+                    ('/world/default/model/uav1/link/mono_cam/base_link/sensor/imager/camera_info', '/uav1/camera/camera_info'),
                     ('/world/default/model/uav1/link/mono_cam_down/base_link/sensor/imager/image', '/uav1/camera_down'),
                     ('/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan', '/uav1/lidar'),
                     ('/world/default/model/uav1/link/lidar_3d/base_link/sensor/lidar/scan/points', '/uav1/lidar_points'),
